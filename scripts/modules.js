@@ -211,11 +211,12 @@ DISPLAY = ( function() {
 	var setTemp = $( '<div>' );
 	setTemp.css( {
 		'position': 'absolute',
-		'width': '75%',
+		'width': '300px',
 		'height': '100px',
 		'background-color': '#999',
-		'left': '12.5%',
-		'top': '100px'
+		'right': '50px',
+		'bottom': '100px',
+		'z-index': 9999
 	} );
 	var maxTemp = $( '<select style="float: right;">' )
 	for ( var i=50; i<=100; i++ ) {
@@ -242,7 +243,9 @@ DISPLAY = ( function() {
 		MAIN.pulse();
 	} );
 
-	$( 'body' ).append( setTemp );
+	$( function() {
+		$( 'body' ).append( setTemp );
+	} );
 
 	return {
 		date: $( '<div>' ),
