@@ -1,0 +1,33 @@
+/*@font-face {
+	font-family: 'Century Gothic', CenturyGothic, sans-serif;	
+	src: url('CenturyGothic.ttf') format('truetype');
+}*/
+@font-face {
+        font-family: 'Century Gothic';
+        src: url('CenturyGothic.eot');
+        src: url('CenturyGothic.eot?#iefix') format('embedded-opentype'),
+                url('http://192.168.0.57/CenturyGothic.woff') format('woff'),
+                url('http://192.168.0.57/CenturyGothic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+}
+
+
+html {
+		height: 100%;
+		/*font: 20px Modern,Arial;*/
+		font: 24px "Century Gothic", CenturyGothic, sans-serif;
+}
+
+html > * {
+		box-sizing: border-box;
+}
+
+div {
+		box-sizing: border-box;
+}
+
+.weather-row {
+		margin-top: 2px;
+		margin-bottom: 2px;
+}
