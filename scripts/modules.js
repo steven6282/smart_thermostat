@@ -22,6 +22,11 @@ MAIN = ( function() {
 				DISPLAY.tempSetting.html( MAIN.heatingTemp + '&deg;' );
 			} else {
 				MAIN.mode = 'idle';
+				if ( oldMode == 'cooling' ) {
+					DISPLAY.tempSetting.html( MAIN.coolingTemp + '&deg;' );
+				} else if ( oldMode == 'heating' ) {
+					DISPLAY.tempSetting.html( MAIN.heatingTemp + '&deg;' );
+				}
 			}
 
 			if ( MAIN.mode != oldMode ) {
