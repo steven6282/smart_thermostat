@@ -178,6 +178,7 @@ MAIN = ( function() {
 		heatingTemp: 65,
 		mode: '',
 		primaryTemp: -100,
+		pulse: pulse,
 		requestTemperature: requestTemperature,
 		requestWeather: requestWeather,
 		server: '127.0.0.1',
@@ -207,7 +208,42 @@ MAIN = ( function() {
 } )();
 
 DISPLAY = ( function() {
-	
+	var setTemp = $( '<div>' );
+	setTemp.css( {
+		'position': 'absolute',
+		'width': '75%',
+		'height': '100px',
+		'background-color': '#999',
+		'left': '12.5%',
+		'top': '100px'
+	} );
+	var maxTemp = $( '<select style="float: right;">' )
+	for ( var i=50; i<=100; i++ ) {
+		maxTemp.append( $( '<option value="' + i + '">' ).text( i ) );
+	}
+	var minTemp = $( '<select style="float: left;">' )
+	for ( var i=50; i<=100; i++ ) {
+		minTemp.append( $( '<option value="' + i + '">' ).text( i ) );
+	}
+	var confirmButt = $( '<input type="button" value="Confirm" style="float: right;">' );
+
+	setTemp.append(
+		$( '<div style="float:left;">' ).text( 'Min Temp' ),
+		minTemp,
+		confirmButt,
+		maxTemp,
+		$( '<div style="float: right;">' ).text( 'Max Temp' )
+	);
+
+	confirmButt.on( 'click', function() {
+		MAIN.heatingTemp = minTemp.val();
+		MAIN.coolingTemp = maxTemp.val();
+		setTemp.hide();
+		MAIN.pulse();
+	} );
+
+	$( 'body' ).append( setTemp );
+
 	return {
 		date: $( '<div>' ),
 		mode: $( '<div>' ),
@@ -232,6 +268,10 @@ DISPLAY = ( function() {
 			this.tempSetting = $( '#tempSetting' );
 			this.time = $( '#time' );
 			this.weatherIcon = $( '#weatherIcon' );
+
+			this.primaryTemp.on( 'click', function() {
+				setTemp.show();
+			} );
 		}
 	}
 } )();
