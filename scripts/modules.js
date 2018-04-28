@@ -13,28 +13,30 @@ MAIN = ( function() {
 
 		var oldMode = MAIN.mode;
 
-		if ( MAIN.primaryTemp > MAIN.coolingTemp ) {
-			MAIN.mode = 'cooling';
-			DISPLAY.tempSetting.text = MAIN.coolingTemp + '&deg;';
-		} else if ( MAIN.primaryTemp < MAIN.heatingTemp ) {
-			MAIN.mode = 'heating';
-			DISPLAY.tempSetting.text = MAIN.heatingTemp + '&deg;';
-		} else {
-			MAIN.mode = 'idle';
-		}
+		if ( MAIN.primaryTemp > -100 ) {
+			if ( MAIN.primaryTemp > MAIN.coolingTemp ) {
+				MAIN.mode = 'cooling';
+				DISPLAY.tempSetting.text = MAIN.coolingTemp + '&deg;';
+			} else if ( MAIN.primaryTemp < MAIN.heatingTemp ) {
+				MAIN.mode = 'heating';
+				DISPLAY.tempSetting.text = MAIN.heatingTemp + '&deg;';
+			} else {
+				MAIN.mode = 'idle';
+			}
 
-		if ( MAIN.mode != oldMode ) {
-			DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/null.png");')
-			AJAX.makeRequest( '/thermostat/' + oldMode + '?mode=OFF', {} );
-			if ( MAIN.mode != 'idle' ) {
-				AJAX.makeRequest( '/thermostat/' + MAIN.mode + '?mode=ON', {},
-					function( retData ) {
-						DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png");')
-					},
-					function( errorThrown ) {
-						alert( errorThrown );
-					} 
-				);
+			if ( MAIN.mode != oldMode ) {
+				DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/null.png");')
+				AJAX.makeRequest( '/thermostat/' + oldMode + '?mode=OFF', {} );
+				if ( MAIN.mode != 'idle' ) {
+					AJAX.makeRequest( '/thermostat/' + MAIN.mode + '?mode=ON', {},
+						function( retData ) {
+							DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png");')
+						},
+						function( errorThrown ) {
+
+						} 
+					);
+				}
 			}
 		}
 	}
@@ -175,7 +177,7 @@ MAIN = ( function() {
 		coolingTemp: 75,
 		heatingTemp: 65,
 		mode: '',
-		primaryTemp: 0,
+		primaryTemp: -100,
 		requestTemperature: requestTemperature,
 		requestWeather: requestWeather,
 		server: '127.0.0.1',
