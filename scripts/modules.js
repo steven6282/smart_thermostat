@@ -103,7 +103,7 @@ MAIN = ( function() {
 					condition.modifier = '';
 				}
 				DISPLAY.weatherIcon.css( {
-						'background-image': 'url("http://' + MAIN.server + '/test_site/images/weather/' + condition.name + condition.modifier + condition.night_modifier + '.png")',
+						'background-image': 'url("/images/weather/' + condition.name + condition.modifier + condition.night_modifier + '.png")',
 						'background-repeat': 'no-repeat',
 						'background-size': 'auto 100%',
 						'background-position': 'center center'
