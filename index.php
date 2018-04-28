@@ -82,7 +82,7 @@
 						<div id="tempSetting" style="float: right;">
 							75&deg;
 						</div>
-						<div id="modeIcon" style="float: right; background-image: url('/thermostat_icons/cooling.png'); background-size: auto 24px; background-repeat: no-repeat; height: 24px; width: 24px; margin-right: 10px; margin-top: 2px;">
+						<div id="modeIcon" style="float: right; background-image: url('/thermostat_icons/null.png'); background-size: auto 24px; background-repeat: no-repeat; height: 24px; width: 24px; margin-right: 10px; margin-top: 2px;">
 						</div>
 						<div id="auxMode" style="float: right; margin-right: 10px; display: none;">
 							AUX
