@@ -32,7 +32,7 @@ MAIN = ( function() {
 						DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png");')
 					},
 					function( errorThrown ) {
-
+						alert( errorThrown );
 					} 
 				);
 			}
