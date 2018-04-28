@@ -30,7 +30,7 @@ MAIN = ( function() {
 				if ( MAIN.mode != 'idle' ) {
 					AJAX.makeRequest( '/thermostat/' + MAIN.mode + '?mode=ON', {},
 						function( retData ) {
-							DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png");')
+							DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png")')
 						},
 						function( errorThrown ) {
 
