@@ -174,7 +174,7 @@ MAIN = ( function() {
 	return {
 		coolingTemp: 75,
 		heatingTemp: 65,
-		mode: 'cooling',
+		mode: '',
 		primaryTemp: 0,
 		requestTemperature: requestTemperature,
 		requestWeather: requestWeather,
