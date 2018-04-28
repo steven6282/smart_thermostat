@@ -80,7 +80,7 @@
 						<div id="scheduleIcon" style="float: right;">
 						</div>
 						<div id="tempSetting" style="float: right;">
-							75&deg;
+							--&deg;
 						</div>
 						<div id="modeIcon" style="float: right; background-image: url('/thermostat_icons/null.png'); background-size: auto 24px; background-repeat: no-repeat; height: 24px; width: 24px; margin-right: 10px; margin-top: 2px;">
 						</div>

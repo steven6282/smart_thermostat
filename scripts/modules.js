@@ -16,10 +16,10 @@ MAIN = ( function() {
 		if ( MAIN.primaryTemp > -100 ) {
 			if ( MAIN.primaryTemp > MAIN.coolingTemp ) {
 				MAIN.mode = 'cooling';
-				DISPLAY.tempSetting.text = MAIN.coolingTemp + '&deg;';
+				DISPLAY.tempSetting.html( MAIN.coolingTemp + '&deg;' );
 			} else if ( MAIN.primaryTemp < MAIN.heatingTemp ) {
 				MAIN.mode = 'heating';
-				DISPLAY.tempSetting.text = MAIN.heatingTemp + '&deg;';
+				DISPLAY.tempSetting.html( MAIN.heatingTemp + '&deg;' );
 			} else {
 				MAIN.mode = 'idle';
 			}
@@ -216,7 +216,8 @@ DISPLAY = ( function() {
 		'background-color': '#999',
 		'right': '50px',
 		'bottom': '100px',
-		'z-index': 9999
+		'z-index': 9999,
+		'display': 'none'
 	} );
 	var maxTemp = $( '<select style="float: right;">' )
 	for ( var i=50; i<=100; i++ ) {
@@ -226,6 +227,8 @@ DISPLAY = ( function() {
 	for ( var i=50; i<=100; i++ ) {
 		minTemp.append( $( '<option value="' + i + '">' ).text( i ) );
 	}
+	maxTemp.val( MAIN.coolingTemp );
+	minTemp.val( MAIN.heatingTemp );
 	var confirmButt = $( '<input type="button" value="Confirm" style="float: right;">' );
 
 	setTemp.append(
