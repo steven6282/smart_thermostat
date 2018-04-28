@@ -25,7 +25,7 @@ MAIN = ( function() {
 			}
 
 			if ( MAIN.mode != oldMode ) {
-				DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/null.png");')
+				DISPLAY.mode.css( 'background-image', "url('/thermostat_icons/null.png')")
 				AJAX.makeRequest( '/thermostat/' + oldMode + '?mode=OFF', {} );
 				if ( MAIN.mode != 'idle' ) {
 					AJAX.makeRequest( '/thermostat/' + MAIN.mode + '?mode=ON', {},
