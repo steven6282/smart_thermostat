@@ -11,6 +11,8 @@ MAIN = ( function() {
 	var pulse = function() {
 		updateDateTime();
 
+		var oldMode = MAIN.mode;
+
 		if ( MAIN.primaryTemp > MAIN.coolingTemp ) {
 			MAIN.mode = 'cooling';
 		} else if ( MAIN.primaryTemp < MAIN.heatingTemp ) {
@@ -19,7 +21,20 @@ MAIN = ( function() {
 			MAIN.mode = 'idle';
 		}
 
-		DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png");')
+		if ( MAIN.mode != oldMode ) {
+			DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/null.png");')
+			AJAX.makeRequest( '/thermostat/' + oldMode + '?mode=OFF', {} );
+			if ( MAIN.mode != 'idle' ) {
+				AJAX.makeRequest( '/thermostat/' + MAIN.mode + '?mode=ON', {},
+					function( retData ) {
+						DISPLAY.mode.css( 'background-image', 'url("/thermostat_icons/' + MAIN.mode + '.png");')
+					},
+					function( errorThrown ) {
+
+					} 
+				);
+			}
+		}
 	}
 
 	var requestTemperature = function() {
