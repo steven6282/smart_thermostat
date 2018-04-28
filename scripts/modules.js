@@ -15,8 +15,10 @@ MAIN = ( function() {
 
 		if ( MAIN.primaryTemp > MAIN.coolingTemp ) {
 			MAIN.mode = 'cooling';
+			DISPLAY.tempSetting.text = MAIN.coolingTemp + '&deg;';
 		} else if ( MAIN.primaryTemp < MAIN.heatingTemp ) {
 			MAIN.mode = 'heating';
+			DISPLAY.tempSetting.text = MAIN.heatingTemp + '&deg;';
 		} else {
 			MAIN.mode = 'idle';
 		}
@@ -213,6 +215,7 @@ DISPLAY = ( function() {
 		outsideLowTemp: $( '<div>' ),
 		outsidePrecipitation: $( '<div>' ),
 		outsideTemp: $( '<div>' ),
+		tempSetting: $( '<div>' ),
 		time: $( '<div>' ),
 		weatherIcon: $( '<div>' ),
 		init: function() {
@@ -224,6 +227,7 @@ DISPLAY = ( function() {
 			this.outsideLowTemp = $( '#lowTemp' );
 			this.outsidePrecipitation = $( '#precipitation' );
 			this.outsideTemp = $( '#outsideTemperature' );
+			this.tempSetting = $( '#tempSetting' );
 			this.time = $( '#time' );
 			this.weatherIcon = $( '#weatherIcon' );
 		}
